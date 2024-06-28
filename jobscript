@@ -18,20 +18,20 @@ conda activate ja
 module load libs/cuda/11.7.0
 
 # Copy a directory of files from scratch to the GPU node's local NVMe storage
-cp -r ~/scratch/papers/CAW/ $TMPDIR
+cp -r ~/scratch/CAW/ $TMPDIR
 
 # Process the data with a GPU app, from within the local NVMe storage area
 cd $TMPDIR/CAW/
 run_command $1
 
 # Copy the results back to the main scratch area
-rsync -av $TMPDIR/CAW/log/ ~/scratch/papers/CAW/log/
-rsync -av $TMPDIR/CAW/results/ ~/scratch/papers/CAW/results/
-rsync -av $TMPDIR/CAW/saved_checkpoints/ ~/scratch/papers/CAW/saved_checkpoints/
-rsync -av $TMPDIR/CAW/saved_models/ ~/scratch/papers/CAW/saved_models/
+rsync -av $TMPDIR/CAW/log/ ~/scratch/CAW/log/
+rsync -av $TMPDIR/CAW/results/ ~/scratch/CAW/results/
+rsync -av $TMPDIR/CAW/saved_checkpoints/ ~/scratch/CAW/saved_checkpoints/
+rsync -av $TMPDIR/CAW/saved_models/ ~/scratch/CAW/saved_models/
 
 # The batch system will automatically delete the contents of $TMPDIR at the end of your job.
-cd ~/scratch/papers/CAW/
+cd ~/scratch/CAW/
 git pull
 git add ./log/
 git commit -m "logs updated"
