@@ -11,7 +11,7 @@ def get_args():
 
     # select dataset and training mode
     parser.add_argument('-d', '--data', type=str, help='data sources to use, try wikipedia or reddit',
-                        choices=['wikipedia', 'reddit', 'socialevolve', 'uci', 'enron', 'socialevolve_1month', 'socialevolve_2weeks'],
+                        choices=['wikipedia', 'reddit', 'socialevolve', 'uci', 'enron', 'socialevolve_1month', 'socialevolve_2weeks', 'wikipedia_fm', 'reddit_fm'],
                         default='wikipedia')
     parser.add_argument('--data_usage', default=1.0, type=float, help='fraction of data to use (0-1)')
     parser.add_argument('-m', '--mode', type=str, default='t', choices=['t', 'i'], help='transductive (t) or inductive (i)')
