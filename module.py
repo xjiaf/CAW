@@ -656,8 +656,8 @@ class CAWN(torch.nn.Module):
         return edge_features
 
     def forward_msg_layer(self, hidden_embeddings, time_features, edge_features, position_features, masks, attn_m):
-        assert(len(hidden_embeddings) == len(time_features)) 
-        assert(len(hidden_embeddings) == (len(edge_features) + 1)) 
+        assert(len(hidden_embeddings) == len(time_features))
+        assert(len(hidden_embeddings) == (len(edge_features) + 1))
         assert(len(masks) == len(edge_features))
         assert(len(hidden_embeddings) == len(position_features))
         new_src_embeddings = []
@@ -1062,6 +1062,7 @@ class FeatureEncoder(nn.Module):
         X = X.view(batch*n_walk, len_walk, feat_dim)
         if mask is not None:
             lengths = mask.view(batch*n_walk)
+            lengths = lengths.cpu()
             X = pack_padded_sequence(X, lengths, batch_first=True, enforce_sorted=False)
         encoded_features = self.lstm_encoder(X)[0]
         if mask is not None:
@@ -1237,4 +1238,3 @@ def _get_activation_fn(activation):
         return F.gelu
     else:
         raise RuntimeError("activation should be relu/gelu, not %s." % activation)
-

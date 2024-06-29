@@ -6,10 +6,10 @@ run_command() {
 
     # Use command based on dataset
     if [[ $data == "wikipedia_fm" ]]; then
-        python main.py -d wikipedia_fm --pos_dim 100 --bs 32 --n_degree 64 --n_layer 1 --mode t --bias 1e-6 --pos_enc lp --walk_pool sum --seed 123
+        python main.py -d wikipedia_fm --pos_dim 108 --bs 32 --n_degree 64 --n_layer 1 --mode t --bias 1e-5 --pos_enc lp --walk_pool sum --seed 123
         python main.py -d wikipedia_fm --pos_dim 108 --bs 32 --n_degree 64 1 --mode i --bias 1e-5 --pos_enc lp --walk_pool sum --seed 0
     elif [[ $data == "reddit_fm" ]]; then
-        python main.py -d reddit_fm --pos_dim 100 --bs 32 --n_degree 64 --n_layer 1 --mode t --bias 1e-6 --pos_enc lp --walk_pool sum --seed 123
+        python main.py -d reddit_fm --pos_dim 108 --bs 32 --n_degree 64 --n_layer 1 --mode t --bias 1e-5 --pos_enc lp --walk_pool sum --seed 123
         python main.py -d reddit_fm --pos_dim 108 --bs 32 --n_degree 64 1 --mode i --bias 1e-5 --pos_enc lp --walk_pool sum --seed 0
     fi
 }
