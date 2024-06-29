@@ -115,7 +115,7 @@ rand_samplers = train_rand_sampler, val_rand_sampler
 
 # multiprocessing memory setting
 rlimit = resource.getrlimit(resource.RLIMIT_NOFILE)
-resource.setrlimit(resource.RLIMIT_NOFILE, (200*args.bs, rlimit[1]))
+resource.setrlimit(resource.RLIMIT_NOFILE, (100*args.bs, rlimit[1]))
 
 # model initialization
 device = torch.device('cuda:{}'.format(GPU))
