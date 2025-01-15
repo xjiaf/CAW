@@ -17,7 +17,7 @@ run_command() {
     fi
 }
 
-conda activate ja
+conda activate twgsl
 module load libs/cuda/11.7.0
 
 # Copy a directory of files from scratch to the GPU node's local NVMe storage
